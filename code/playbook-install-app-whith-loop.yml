@@ -1,0 +1,10 @@
+---
+- name: Install tree
+  hosts: all
+  become: yes
+
+  tasks:
+  - name : Install
+    apt  : name={{ item  }} state=latest
+    loop : 
+      - tree

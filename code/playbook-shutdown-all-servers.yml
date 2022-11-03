@@ -1,0 +1,8 @@
+---
+- name: Shutdown all servers
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Shutdown
+    shell: sudo shutdown now

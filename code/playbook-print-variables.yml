@@ -1,0 +1,36 @@
+---
+- name   : Print variables
+  hosts  : all
+  become : yes
+
+  vars:
+   var_1 : This is content var-1
+   var_2 : This is content var-2
+   var_3 : This is content var-3
+
+  tasks:
+
+  - name  : Print var-1
+    debug :
+     var  : var_1
+
+  - name  : Print content var_2
+    debug :
+     msg  : "Content var_2 {{ var_2}}"
+
+  - set_fact : full_message="{{ var_1 }} {{ var_2 }}"
+
+  - debug :
+     var  : full_message 
+
+  - name  : Print info from "Setup"
+    debug :
+     var  : ansible_distribution 
+
+  - name: Request shell comand
+    shell    : uptime
+    register : result
+
+  - name  : Show result uptime 
+    debug :
+     var  : result.stdout
