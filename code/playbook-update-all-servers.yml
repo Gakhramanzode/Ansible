@@ -1,0 +1,8 @@
+---
+ - name   : Update Linux Ubuntu
+   hosts  : all
+   become : yes
+
+   tasks:
+   - name  : Request command
+     shell : apt update

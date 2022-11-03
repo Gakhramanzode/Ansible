@@ -1,0 +1,24 @@
+---
+- name   : Loops
+  hosts  : all
+  become : yes
+
+  tasks:
+  - name  : Print Hello
+    debug : msg="Hello {{ item  }}"
+    loop:
+       - "Asker"
+       - "Sophy" 
+
+  - name  : Loop until example
+    shell : echo -n Y  >> myfile.txt && cat myfile.txt
+    register : output
+    # задержка в секундах (необязательно)
+    delay: 2
+    # сколько максимум раз сделать (необязательно)
+    retries: 5
+    until: output.stdout.find("YYY") == false
+
+  - name : Print final output
+    debug:
+      var: output.stdout

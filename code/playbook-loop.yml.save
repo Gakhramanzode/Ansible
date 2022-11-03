@@ -1,0 +1,11 @@
+---
+- name   : Loops
+  hosts  : all
+  become : yes
+
+  tasks:
+  - name  : Print Hello
+    debug = "Hello {{ item  }}"
+    loop:
+	- "Asker"
+	- "Sophy" 

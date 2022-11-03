@@ -1,0 +1,9 @@
+[def_servers]
+linux-1 ansible_host=54.93.165.85
+
+[dec_servers]
+linux-2 ansible_host=18.198.55.166
+
+[ALL_LINUX:children]
+def_servers
+dec_servers
